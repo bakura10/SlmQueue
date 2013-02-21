@@ -6,12 +6,20 @@ use SlmQueue\Job\JobInterface;
 use SlmQueue\Options\WorkerOptions;
 use SlmQueue\Queue\QueueInterface;
 use SlmQueue\Queue\QueuePluginManager;
+use Zend\EventManager\EventManager;
+use Zend\EventManager\EventManagerAwareInterface;
+use Zend\EventManager\EventManagerInterface;
 
 /**
  * AbstractWorker
  */
-abstract class AbstractWorker implements WorkerInterface
+abstract class AbstractWorker implements WorkerInterface, EventManagerAwareInterface
 {
+    /**
+     * @var EventManagerInterface
+     */
+    protected $eventManager;
+
     /**
      * @var QueuePluginManager
      */
@@ -41,8 +49,12 @@ abstract class AbstractWorker implements WorkerInterface
     public function processQueue($queueName, array $options = array())
     {
         /** @var $queue QueueInterface */
-        $queue = $this->queuePluginManager->get($queueName);
-        $count = 0;
+        $queue        = $this->queuePluginManager->get($queueName);
+        $eventManager = $this->getEventManager();
+        $count        = 0;
+
+        $workerEvent = new WorkerEvent();
+        $workerEvent->setQueue($queue);
 
         while (true) {
             // Pop operations may return a list of jobs or a single job
@@ -58,8 +70,19 @@ abstract class AbstractWorker implements WorkerInterface
                     return $count;
                 }
 
+                $workerEvent->setJob($job);
+
+                /** @var $result \Zend\EventManager\ResponseCollection */
+                $result = $eventManager->trigger(WorkerEvent::EVENT_PROCESS_JOB_PRE, $workerEvent);
+
+                if ($result->last() === false) {
+                    continue;
+                }
+
                 $this->processJob($job, $queue);
                 $count++;
+
+                $eventManager->trigger(WorkerEvent::EVENT_PROCESS_JOB_POST, $workerEvent);
 
                 // Those are various criterias to stop the queue processing
                 if ($count === $this->options->getMaxRuns() || memory_get_usage() > $this->options->getMaxMemory()) {
@@ -69,5 +92,25 @@ abstract class AbstractWorker implements WorkerInterface
         }
 
         return $count;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEventManager(EventManagerInterface $eventManager)
+    {
+        $this->eventManager = $eventManager;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEventManager()
+    {
+        if ($this->eventManager === null) {
+            $this->eventManager = new EventManager();
+        }
+
+        return $this->eventManager;
     }
 }
