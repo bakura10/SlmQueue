@@ -1,6 +1,6 @@
 <?php
 
-namespace SlmQueue\Queue\Exception;
+namespace Slm\Queue\Queue\Exception;
 
 use Exception;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace SlmQueue\Worker;
+namespace Slm\Queue\Worker;
 
-use SlmQueue\Job\JobInterface;
-use SlmQueue\Options\WorkerOptions;
-use SlmQueue\Queue\QueueInterface;
-use SlmQueue\Queue\QueuePluginManager;
+use Slm\Queue\Job\JobInterface;
+use Slm\Queue\Options\WorkerOptions;
+use Slm\Queue\Queue\QueueInterface;
+use Slm\Queue\Queue\QueuePluginManager;
 
 /**
  * AbstractWorker

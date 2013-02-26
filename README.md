@@ -3,7 +3,7 @@ SlmQueue
 
 Master [![Build Status](https://travis-ci.org/juriansluiman/SlmQueue.png?branch=master)](https://travis-ci.org/juriansluiman/SlmQueue)
 
-Version 0.2.4 Created by Jurian Sluiman and Michaël Gallego
+Version 0.3.0 Created by Jurian Sluiman and Michaël Gallego
 
 > Please note that this is a complete rewrite of SlmQueue. The previous version was tagged as version 0.1.0, so if you still
 > want to use it, please update your composer.json file.
@@ -22,6 +22,7 @@ contains interfaces and abstract classes. Here are the current supported systems
 
 * Beanstalk: use [SlmQueueBeanstalkd](https://github.com/juriansluiman/SlmQueueBeanstalkd)
 * Amazon SQS: use [SlmQueueSqs](https://github.com/juriansluiman/SlmQueueSqs)
+* Doctrine: use [SlmQueueDoctrine](https://github.com/juriansluiman/SlmQueueDoctrine)
 
 A job queue helps to offload long or memory-intensive processes from the HTTP requests users sent to the Zend Framework 2
 application. There are many use cases for asynchronous jobs and the most common will be:

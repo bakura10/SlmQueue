@@ -1,8 +1,8 @@
 <?php
 
-namespace SlmQueue\Queue;
+namespace Slm\Queue\Queue;
 
-use SlmQueue\Job\JobInterface;
+use Slm\Queue\Job\JobInterface;
 
 /**
  * Contract for a queue
@@ -19,7 +19,7 @@ interface QueueInterface
     /**
      * Get the job plugin manager
      *
-     * @return \SlmQueue\Job\JobPluginManager
+     * @return \Slm\Queue\Job\JobPluginManager
      */
     public function getJobPluginManager();
 

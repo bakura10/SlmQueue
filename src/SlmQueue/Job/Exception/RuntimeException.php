@@ -1,6 +1,6 @@
 <?php
 
-namespace SlmQueue\Job\Exception;
+namespace Slm\Queue\Job\Exception;
 
 use RuntimeException as BaseRuntimeException;
 

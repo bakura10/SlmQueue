@@ -1,6 +1,6 @@
 <?php
 
-namespace SlmQueue\Options;
+namespace Slm\Queue\Options;
 
 use Zend\Stdlib\AbstractOptions;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace SlmQueue\Factory;
+namespace Slm\Queue\Factory;
 
-use SlmQueue\Queue\QueuePluginManager;
+use Slm\Queue\Queue\QueuePluginManager;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

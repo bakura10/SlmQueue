@@ -1,9 +1,9 @@
 <?php
 
-namespace SlmQueue\Worker;
+namespace Slm\Queue\Worker;
 
-use SlmQueue\Job\JobInterface;
-use SlmQueue\Queue\QueueInterface;
+use Slm\Queue\Job\JobInterface;
+use Slm\Queue\Queue\QueueInterface;
 
 /**
  * A worker is responsible for processing jobs. Basically, it pops a job and execute it, until the queue is

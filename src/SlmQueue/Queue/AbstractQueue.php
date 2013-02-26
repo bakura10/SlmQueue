@@ -1,8 +1,8 @@
 <?php
 
-namespace SlmQueue\Queue;
+namespace Slm\Queue\Queue;
 
-use SlmQueue\Job\JobPluginManager;
+use Slm\Queue\Job\JobPluginManager;
 
 /**
  * AbstractQueue
@@ -52,11 +52,11 @@ abstract class AbstractQueue implements QueueInterface
      * @param  string $className
      * @param  mixed  $content
      * @param  array  $metadata
-     * @return \SlmQueue\Job\JobInterface
+     * @return \Slm\Queue\Job\JobInterface
      */
     protected function createJob($className, $content = null, array $metadata = array())
     {
-        /** @var $job \SlmQueue\Job\JobInterface */
+        /** @var $job \Slm\Queue\Job\JobInterface */
         $job = $this->jobPluginManager->get($className);
         $job->setContent($content)
             ->setMetadata($metadata);

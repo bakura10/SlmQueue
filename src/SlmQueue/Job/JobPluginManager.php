@@ -1,6 +1,6 @@
 <?php
 
-namespace SlmQueue\Job;
+namespace Slm\Queue\Job;
 
 use Zend\ServiceManager\AbstractPluginManager;
 

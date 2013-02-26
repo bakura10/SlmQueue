@@ -1,3 +1,10 @@
+# 0.3.0
+
+- Rename package (namespace is now Slm\Queue instead of SlmQueue, composer is now slm/queue instead of juriansluiman/slm-queue)
+- Add queue features
+- Add support for events
+- Add support for Doctrine based queues with SlmQueueDoctrine
+
 # 0.2.4
 
 - Add support for signals to stop worker properly

@@ -1,6 +1,6 @@
 <?php
 
-namespace SlmQueue\Queue;
+namespace Slm\Queue\Queue;
 
 use Zend\ServiceManager\AbstractPluginManager;
 
